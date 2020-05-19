@@ -1,0 +1,75 @@
+{
+  "User": [
+    {
+      "userId": "uuid",
+      "username": "string",
+      "password": "string",
+      "channelsJoined": [
+        {
+          "channelId": "uuid ref Channel",
+          "channelName": "string ref Channel",
+          "memberCount": "number"
+        }
+      ]
+    }
+  ],
+  "Channel": [
+    {
+      "channelId": "uuid",
+      "channelName": "string",
+      "owner": {
+        "ownerId": "uuid ref User",
+        "username": "string ref User"
+      },
+      "members": [
+        {
+          "userId": "uuid ref User",
+          "username": "string ref User"
+        }
+      ],
+      "rooms": [
+        {
+          "roomId": "uuid ref Room",
+          "roomName": "string ref Room",
+          "latestChats": [
+            {
+              "chatId": "uuid ref Chat",
+              "sender": {
+                "userId": "uuid ref User",
+                "username": "string ref User"
+              },
+              "content": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Room": [
+    {
+      "roomId": "uuid",
+      "roomChannel": "uuid ref Channel",
+      "roomName": "string",
+      "chats": [
+        {
+          "chatId": "uuid",
+          "sender": {
+            "userId": "uuid ref User",
+            "username": "string ref User"
+          },
+          "content": "string"
+        }
+      ]
+    }
+  ],
+  "Chat": [
+    {
+      "chatId": "uuid",
+      "sender": {
+        "userId": "uuid ref User",
+        "username": "string ref User"
+      },
+      "content": "string"
+    }
+  ]
+}
